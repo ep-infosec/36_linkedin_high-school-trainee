@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/js/main.js"></script>
+        <title>My tech blog!</title>
+    </head>
+    <body>
+        <h1>POST A BLOG ENTRY</h1>
+        <div id="notification" class="notification"></div>
+        <form>
+            <textarea id="blog-content" name="blog-content"></textarea>
+            <input type="submit" id="add-post" value="Post"/>
+        </form>
+
+    {% if posts %}
+        <div id="blog-post-list">
+        {% for post in posts %}
+            <div id="blog-{{ post.id }}" class="blog-post">
+                <div class="actions hidden">
+                    <a class="edit"><img src="../static/images/pencil.png" alt="Edit"></a>
+                    <a class="delete"><img src="../static/images/trash.png" alt="Delete"></a>
+                </div>
+                <div class="post-content">{{ post.content }}</div>
+            </div>
+        {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-blog">You have no blog posts yet!</div>
+    {% endif %}
+    </body>
+</html>
